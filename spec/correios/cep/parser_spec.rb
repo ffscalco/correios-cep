@@ -25,12 +25,12 @@ describe Correios::CEP::Parser do
       end
       let(:expected_address) do
         {
-          address: 'Rua Fernando Amorim',
-          neighborhood: 'Cavaleiro',
-          city: 'Jaboatão dos Guararapes',
-          state: 'PE',
-          zipcode: '54250610',
-          complement: 'de 1500 até o fim (zona mista)'
+          :address => 'Rua Fernando Amorim',
+          :neighborhood => 'Cavaleiro',
+          :city => 'Jaboatão dos Guararapes',
+          :state => 'PE',
+          :zipcode => '54250610',
+          :complement => 'de 1500 até o fim (zona mista)'
         }
       end
 

@@ -3,11 +3,11 @@ require 'spec_helper'
 describe Correios::CEP::WebService do
   let(:cep) { '54250610' }
 
-  describe '#request', vcr: { cassette_name: 'correios_consulta_cep_ok' } do
+  describe '#request', :vcr => { :cassette_name => 'correios_consulta_cep_ok' } do
     around do |example|
-      Correios::CEP.log_enabled = false
+      # Correios::CEP.log_enabled = false
       example.run
-      Correios::CEP.log_enabled = true
+      # Correios::CEP.log_enabled = true
     end
 
     it 'returns HTTP response body from Correios Web Service' do

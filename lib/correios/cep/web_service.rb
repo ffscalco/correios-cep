@@ -15,10 +15,10 @@ module Correios
         http = build_http
 
         request = build_request(zipcode)
-        Correios::CEP.log_request(request, uri.to_s)
+        # Correios::CEP.log_request(request, uri.to_s)
 
         response = http.request(request)
-        Correios::CEP.log_response(response)
+        # Correios::CEP.log_response(response)
 
         http.finish if http.started?
 
@@ -37,10 +37,10 @@ module Correios
           proxy_uri.port,
           nil,
           nil,
-          use_ssl: true,
-          verify_mode: OpenSSL::SSL::VERIFY_NONE,
-          open_timeout: Correios::CEP.request_timeout,
-          read_timeout: Correios::CEP.request_timeout
+          :use_ssl => true,
+          :verify_mode => OpenSSL::SSL::VERIFY_NONE,
+          :open_timeout => Correios::CEP.request_timeout,
+          :read_timeout => Correios::CEP.request_timeout
         )
       end
 

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe Correios::CEP do
   describe '#proxy_url' do
@@ -8,7 +9,7 @@ describe Correios::CEP do
 
     context 'when set proxy URL' do
       it 'returns proxy URL' do
-        Correios::CEP.configure { |config| config.proxy_url = 'http://10.20.30.40:8888' }
+        Correios::CEP.proxy_url = 'http://10.20.30.40:8888'
         expect(Correios::CEP.proxy_url).to eql 'http://10.20.30.40:8888'
       end
     end
@@ -21,12 +22,12 @@ describe Correios::CEP do
 
     context "when set timeout" do
       it "returns timeout" do
-        Correios::CEP.configure { |config| config.request_timeout = 3 }
+        Correios::CEP.request_timeout = 3
         expect(Correios::CEP.request_timeout).to eql 3
       end
 
       it "returns timeout in seconds (integer)" do
-        Correios::CEP.configure { |config| config.request_timeout = 2.123 }
+        Correios::CEP.request_timeout = 2.123
         expect(Correios::CEP.request_timeout).to eql 2
       end
     end
