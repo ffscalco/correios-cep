@@ -37,10 +37,7 @@ module Correios
           proxy_uri.port,
           nil,
           nil,
-          :use_ssl => true,
-          :verify_mode => OpenSSL::SSL::VERIFY_NONE,
-          :open_timeout => Correios::CEP.request_timeout,
-          :read_timeout => Correios::CEP.request_timeout
+          :use_ssl => true
         )
       end
 
