@@ -30,15 +30,20 @@ module Correios
       attr_reader :uri, :proxy_uri
 
       def build_http
-        Net::HTTP.start(
+         https = Net::HTTP.new(
           uri.host,
           uri.port,
           proxy_uri.host,
           proxy_uri.port,
           nil,
-          nil,
-          :use_ssl => true
+          nil
         )
+        https.use_ssl = true
+        https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        https.open_timeout = Correios::CEP.request_timeout
+        https.read_timeout = Correios::CEP.request_timeout
+
+        https.start
       end
 
       def build_request(zipcode)
